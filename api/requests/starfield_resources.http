@@ -1,0 +1,11 @@
+### GET stars
+GET http://localhost:8000/api/stars
+
+### GET planets
+GET http://localhost:8000/api/planets
+
+### GET moons
+GET http://localhost:8000/api/moons
+
+### GET resources
+GET http://localhost:8000/api/resources
