@@ -15,13 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
-import api
 from starfield_resources import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
     path("health_check/", views.health_check),
+    path("auth/", include("rest_framework.urls")),
 ]
