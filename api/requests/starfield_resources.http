@@ -1,3 +1,14 @@
+### POST auth token
+POST http://localhost:8000/auth/token/
+Content-Type: application/json
+
+{
+  "username": "l",
+  "password": "qwer"
+}
+
+> {% client.global.set("auth_token", response.body.token); %}
+
 ### GET health check
 GET http://localhost:8000/health_check/
 
