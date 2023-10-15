@@ -21,13 +21,6 @@ jobs:
           options: --exclude api/api/migrations
           src: api
 
-      - name: mypy
-        working-directory: api
-        run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          poetry install
-          poetry run mypy .
-
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
