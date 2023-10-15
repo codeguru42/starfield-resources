@@ -8,7 +8,7 @@ class Resource(models.Model):
 
 class Star(models.Model):
     name = models.CharField(max_length=255)
-    level = models.IntegerField
+    level = models.IntegerField()
 
 
 class Planet(models.Model):
