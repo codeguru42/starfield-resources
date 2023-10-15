@@ -25,11 +25,43 @@ Content-Type: application/json
 ### GET stars
 GET http://localhost:8000/api/stars/
 
+### POST stars
+POST http://localhost:8000/api/planets/
+Authorization: Token {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Mars",
+  "star": 1,
+  "extreme_environment": false,
+  "resources": [1]
+}
+
 ### GET planets
 GET http://localhost:8000/api/planets/
 
+### POST moons
+POST http://localhost:8000/api/moons/
+Authorization: Token {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Sol",
+  "level": 1
+}
+
 ### GET moons
 GET http://localhost:8000/api/moons/
+
+### POST resources
+POST http://localhost:8000/api/resources/
+Authorization: Token {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Iron",
+  "abbreviation": "Fe"
+}
 
 ### GET resources
 GET http://localhost:8000/api/resources/
