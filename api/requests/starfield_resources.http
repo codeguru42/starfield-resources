@@ -12,6 +12,16 @@ Content-Type: application/json
 ### GET health check
 GET http://localhost:8000/health_check/
 
+### POST stars
+POST http://localhost:8000/api/stars/
+Authorization: Token {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Sol",
+  "level": 1
+}
+
 ### GET stars
 GET http://localhost:8000/api/stars/
 
