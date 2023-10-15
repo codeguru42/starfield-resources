@@ -1,4 +1,3 @@
-import './App.css'
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
 import {planets} from "./data.ts";
 
