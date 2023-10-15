@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.11-slim-bookworm
 
 RUN useradd -ms /bin/bash api
 USER api
