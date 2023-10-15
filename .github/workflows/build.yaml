@@ -17,7 +17,8 @@ jobs:
 
       - name: black
         uses: psf/black@stable
-        working-directory: api
+        with:
+          src: api
 
       - name: mypy
         working-directory: api
