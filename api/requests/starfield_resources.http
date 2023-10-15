@@ -1,3 +1,6 @@
+### GET health check
+GET http://localhost:8000/health_check/
+
 ### GET stars
 GET http://localhost:8000/api/stars/
 
