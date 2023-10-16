@@ -9,19 +9,26 @@ class ResourceSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class StarSerializer(serializers.ModelSerializer):
+class MoonSerializer(serializers.ModelSerializer):
+    resources = ResourceSerializer(many=True)
+
     class Meta:
-        model = models.Star
+        model = models.Moon
         fields = "__all__"
 
 
 class PlanetSerializer(serializers.ModelSerializer):
+    moons = MoonSerializer(many=True)
+    resources = ResourceSerializer(many=True)
+
     class Meta:
         model = models.Planet
         fields = "__all__"
 
 
-class MoonSerializer(serializers.ModelSerializer):
+class StarSerializer(serializers.ModelSerializer):
+    planets = PlanetSerializer(many=True)
+
     class Meta:
-        model = models.Moon
+        model = models.Star
         fields = "__all__"
