@@ -62,6 +62,12 @@ export interface Moon {
     'id'?: number;
     /**
      * 
+     * @type {Array<StarPlanetsInnerMoonsInnerResourcesInner>}
+     * @memberof Moon
+     */
+    'resources': Array<StarPlanetsInnerMoonsInnerResourcesInner>;
+    /**
+     * 
      * @type {string}
      * @memberof Moon
      */
@@ -78,12 +84,6 @@ export interface Moon {
      * @memberof Moon
      */
     'planet': number;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof Moon
-     */
-    'resources': Array<number>;
 }
 /**
  * 
@@ -97,6 +97,18 @@ export interface Planet {
      * @memberof Planet
      */
     'id'?: number;
+    /**
+     * 
+     * @type {Array<StarPlanetsInnerMoonsInner>}
+     * @memberof Planet
+     */
+    'moons': Array<StarPlanetsInnerMoonsInner>;
+    /**
+     * 
+     * @type {Array<StarPlanetsInnerMoonsInnerResourcesInner>}
+     * @memberof Planet
+     */
+    'resources': Array<StarPlanetsInnerMoonsInnerResourcesInner>;
     /**
      * 
      * @type {string}
@@ -115,12 +127,6 @@ export interface Planet {
      * @memberof Planet
      */
     'star': number;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof Planet
-     */
-    'resources': Array<number>;
 }
 /**
  * 
@@ -161,6 +167,12 @@ export interface Star {
     'id'?: number;
     /**
      * 
+     * @type {Array<StarPlanetsInner>}
+     * @memberof Star
+     */
+    'planets': Array<StarPlanetsInner>;
+    /**
+     * 
      * @type {string}
      * @memberof Star
      */
@@ -171,6 +183,111 @@ export interface Star {
      * @memberof Star
      */
     'level': number;
+}
+/**
+ * 
+ * @export
+ * @interface StarPlanetsInner
+ */
+export interface StarPlanetsInner {
+    /**
+     * 
+     * @type {number}
+     * @memberof StarPlanetsInner
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {Array<StarPlanetsInnerMoonsInner>}
+     * @memberof StarPlanetsInner
+     */
+    'moons': Array<StarPlanetsInnerMoonsInner>;
+    /**
+     * 
+     * @type {Array<StarPlanetsInnerMoonsInnerResourcesInner>}
+     * @memberof StarPlanetsInner
+     */
+    'resources': Array<StarPlanetsInnerMoonsInnerResourcesInner>;
+    /**
+     * 
+     * @type {string}
+     * @memberof StarPlanetsInner
+     */
+    'name': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StarPlanetsInner
+     */
+    'extreme_environment': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof StarPlanetsInner
+     */
+    'star': number;
+}
+/**
+ * 
+ * @export
+ * @interface StarPlanetsInnerMoonsInner
+ */
+export interface StarPlanetsInnerMoonsInner {
+    /**
+     * 
+     * @type {number}
+     * @memberof StarPlanetsInnerMoonsInner
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {Array<StarPlanetsInnerMoonsInnerResourcesInner>}
+     * @memberof StarPlanetsInnerMoonsInner
+     */
+    'resources': Array<StarPlanetsInnerMoonsInnerResourcesInner>;
+    /**
+     * 
+     * @type {string}
+     * @memberof StarPlanetsInnerMoonsInner
+     */
+    'name': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof StarPlanetsInnerMoonsInner
+     */
+    'extreme_environment': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof StarPlanetsInnerMoonsInner
+     */
+    'planet': number;
+}
+/**
+ * 
+ * @export
+ * @interface StarPlanetsInnerMoonsInnerResourcesInner
+ */
+export interface StarPlanetsInnerMoonsInnerResourcesInner {
+    /**
+     * 
+     * @type {number}
+     * @memberof StarPlanetsInnerMoonsInnerResourcesInner
+     */
+    'id'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof StarPlanetsInnerMoonsInnerResourcesInner
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StarPlanetsInnerMoonsInnerResourcesInner
+     */
+    'abbreviation': string;
 }
 
 /**
