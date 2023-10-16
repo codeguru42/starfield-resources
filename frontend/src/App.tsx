@@ -1,24 +1,33 @@
 import {DataGrid, GridColDef} from "@mui/x-data-grid";
-import {planets} from "./data.ts";
+import {useEffect, useState} from "react";
+import {ApiApiFactory, Star} from "./api";
 
 function App() {
+  const [stars, setStars] = useState<Star[]>([])
+
+  useEffect( () => {
+    const api = ApiApiFactory();
+    api.listStars()
+      .then((stars) => {
+        setStars(stars.data)
+      })
+  }, [])
+
   const columns: GridColDef[] = [
     {
       field: 'name',
-      headerName: 'Planet',
-      width: 150,
+      headerName: 'Star',
     },
     {
-      field: 'star',
-      headerName: 'Star',
-      width: 150,
-    }
+      field: 'level',
+      headerName: 'Level',
+    },
   ]
 
   return (
     <>
       <h1>Starfield Resources</h1>
-      <DataGrid columns={columns} rows={planets}/>
+      <DataGrid columns={columns} rows={stars}/>
     </>
   )
 }
