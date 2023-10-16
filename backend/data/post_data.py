@@ -1,5 +1,6 @@
 import math
 
+import numpy as np
 import pandas as pd
 import typer
 
@@ -12,9 +13,14 @@ def get_resources(planet_data):
     return all_resources[~all_resources.isna()].unique()
 
 
+def write_resources(resources):
+    np.savetxt("resources.csv", resources, delimiter=",", fmt="%s")
+
+
 def main(filename: str):
     planet_data = pd.read_csv(filename)
-    print(get_resources(planet_data))
+    resources = get_resources(planet_data)
+    write_resources(resources)
 
 
 if __name__ == "__main__":
