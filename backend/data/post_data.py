@@ -36,6 +36,7 @@ def post_resources(filename: str, username: str, password: str):
     resource_data.columns = map(str.lower, resource_data.columns)
     client = ApiClient(token)
     for resource in resource_data.to_dict("records"):
+        # TODO: update existing resource
         try:
             client.post_resource(models.Resource(**resource))
         except ValidationError:
