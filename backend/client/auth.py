@@ -1,5 +1,7 @@
 import requests
 
+from client import models
+
 
 class AuthClient:
     # TODO: parametrize host
@@ -12,4 +14,4 @@ class AuthClient:
             "password": passsword,
         }
         response = requests.post(AuthClient.TOKEN_ROUTE, data=body)
-        return response.json()
+        return models.Token(**response.json())

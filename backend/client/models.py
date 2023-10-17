@@ -3,6 +3,10 @@ from enum import Enum, auto
 from pydantic import BaseModel
 
 
+class Token(BaseModel):
+    token: str
+
+
 class Rarity(Enum):
     COMMON = 0
     UNCOMMON = 1
