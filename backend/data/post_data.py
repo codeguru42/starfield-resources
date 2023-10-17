@@ -1,8 +1,8 @@
-import math
-
 import numpy as np
 import pandas as pd
 import typer
+
+app = typer.Typer()
 
 
 def get_resources(planet_data):
@@ -17,11 +17,12 @@ def write_resources(resources):
     np.savetxt("resources.csv", resources, delimiter=",", fmt="%s")
 
 
-def main(filename: str):
+@app.command()
+def parse_resources(filename: str):
     planet_data = pd.read_csv(filename)
     resources = get_resources(planet_data)
     write_resources(resources)
 
 
 if __name__ == "__main__":
-    typer.run(main)
+    app()
