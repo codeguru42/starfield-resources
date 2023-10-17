@@ -1,5 +1,5 @@
 ### POST auth token
-POST http://localhost:8000/auth/token/
+POST http://localhost:8000/auth/token
 Content-Type: application/json
 
 {
@@ -10,10 +10,10 @@ Content-Type: application/json
 > {% client.global.set("auth_token", response.body.token); %}
 
 ### GET health check
-GET http://localhost:8000/health_check/
+GET http://localhost:8000/health_check
 
 ### POST stars
-POST http://localhost:8000/api/stars/
+POST http://localhost:8000/api/stars
 Authorization: Token {{auth_token}}
 Content-Type: application/json
 
@@ -23,10 +23,10 @@ Content-Type: application/json
 }
 
 ### GET stars
-GET http://localhost:8000/api/stars/
+GET http://localhost:8000/api/stars
 
 ### POST stars
-POST http://localhost:8000/api/planets/
+POST http://localhost:8000/api/planets
 Authorization: Token {{auth_token}}
 Content-Type: application/json
 
@@ -38,10 +38,10 @@ Content-Type: application/json
 }
 
 ### GET planets
-GET http://localhost:8000/api/planets/
+GET http://localhost:8000/api/planets
 
 ### POST moons
-POST http://localhost:8000/api/moons/
+POST http://localhost:8000/api/moons
 Authorization: Token {{auth_token}}
 Content-Type: application/json
 
@@ -51,10 +51,10 @@ Content-Type: application/json
 }
 
 ### GET moons
-GET http://localhost:8000/api/moons/
+GET http://localhost:8000/api/moons
 
 ### POST resources
-POST http://localhost:8000/api/resources/
+POST http://localhost:8000/api/resources
 Authorization: Token {{auth_token}}
 Content-Type: application/json
 
@@ -65,4 +65,4 @@ Content-Type: application/json
 }
 
 ### GET resources
-GET http://localhost:8000/api/resources/
+GET http://localhost:8000/api/resources
