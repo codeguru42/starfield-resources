@@ -2,8 +2,16 @@ from django.db import models
 
 
 class Resource(models.Model):
+    RARITY = (
+        (0, "common"),
+        (1, "uncommon"),
+        (2, "rare"),
+        (3, "exotic"),
+        (4, "unique"),
+    )
     name = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255)
+    rarity = models.IntegerField(choices=RARITY)
 
 
 class Star(models.Model):

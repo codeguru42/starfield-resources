@@ -24,6 +24,18 @@ class Migration(migrations.Migration):
                 ),
                 ("name", models.CharField(max_length=255)),
                 ("abbreviation", models.CharField(max_length=255)),
+                (
+                    "rarity",
+                    models.IntegerField(
+                        choices=[
+                            (0, "common"),
+                            (1, "uncommon"),
+                            (2, "rare"),
+                            (3, "exotic"),
+                            (4, "unique"),
+                        ]
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
