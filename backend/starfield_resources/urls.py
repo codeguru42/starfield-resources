@@ -21,9 +21,9 @@ from rest_framework.authtoken import views as auth_views
 from starfield_resources import views
 
 urlpatterns = [
-    path("admin", admin.site.urls),
-    path("api", include("api.urls")),
-    path("health_check", views.health_check),
-    path("auth", include("rest_framework.urls")),
-    path("auth/token", auth_views.obtain_auth_token),
+    path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
+    path("health_check/", views.health_check),
+    path("auth/", include("rest_framework.urls")),
+    path("auth/token/", auth_views.obtain_auth_token),
 ]
