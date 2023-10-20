@@ -31,14 +31,14 @@ def parse_resources(filename: str):
 
 @app.command()
 def load_inorganic(filename: str, username: str, password: str):
+    resource_data = _extract_inorganic(filename)
+    resource_data = _transform_inorganic(resource_data)
+    _load_inorganic(resource_data, username, password)
+
+
+def _load_inorganic(resource_data, username, password):
     try:
         token = AuthClient().token(username, password)
-        resource_data = pd.read_csv(filename)
-        resource_data.columns = map(str.lower, resource_data.columns)
-        resource_data = resource_data[["resource", "description", "rarity"]]
-        resource_data = resource_data.rename(
-            columns={"description": "name", "resource": "abbreviation"}
-        )
         client = ApiClient(token)
         for resource in resource_data.to_dict("records")[1:]:
             # TODO: update existing resource
@@ -50,6 +50,20 @@ def load_inorganic(filename: str, username: str, password: str):
                 print(err.json())
     except ValidationError as err:
         print(err.json())
+
+
+def _transform_inorganic(resource_data):
+    resource_data.columns = map(str.lower, resource_data.columns)
+    resource_data = resource_data[["resource", "description", "rarity"]]
+    resource_data = resource_data.rename(
+        columns={"description": "name", "resource": "abbreviation"}
+    )
+    return resource_data
+
+
+def _extract_inorganic(filename):
+    resource_data = pd.read_csv(filename)
+    return resource_data
 
 
 if __name__ == "__main__":
