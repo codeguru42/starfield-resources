@@ -31,16 +31,19 @@ def parse_resources(filename: str):
 
 @app.command()
 def post_resources(filename: str, username: str, password: str):
-    token = AuthClient().token(username, password)
-    resource_data = pd.read_csv(filename)
-    resource_data.columns = map(str.lower, resource_data.columns)
-    client = ApiClient(token)
-    for resource in resource_data.to_dict("records"):
-        # TODO: update existing resource
-        try:
-            client.post_resource(models.Resource(**resource))
-        except ValidationError:
-            print(f"Unable to insert: {resource}")
+    try:
+        token = AuthClient().token(username, password)
+        resource_data = pd.read_csv(filename)
+        resource_data.columns = map(str.lower, resource_data.columns)
+        client = ApiClient(token)
+        for resource in resource_data.to_dict("records"):
+            # TODO: update existing resource
+            try:
+                client.post_resource(models.Resource(**resource))
+            except ValidationError:
+                print(f"Unable to insert: {resource}")
+    except ValidationError as err:
+        print(err.json())
 
 
 if __name__ == "__main__":
