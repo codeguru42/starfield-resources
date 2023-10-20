@@ -30,18 +30,24 @@ def parse_resources(filename: str):
 
 
 @app.command()
-def post_resources(filename: str, username: str, password: str):
+def load_inorganic(filename: str, username: str, password: str):
     try:
         token = AuthClient().token(username, password)
         resource_data = pd.read_csv(filename)
         resource_data.columns = map(str.lower, resource_data.columns)
+        resource_data = resource_data[["resource", "description", "rarity"]]
+        resource_data = resource_data.rename(
+            columns={"description": "name", "resource": "abbreviation"}
+        )
         client = ApiClient(token)
-        for resource in resource_data.to_dict("records"):
+        for resource in resource_data.to_dict("records")[1:]:
             # TODO: update existing resource
             try:
+                resource["rarity"] = models.Rarity[resource["rarity"].upper()]
                 client.post_resource(models.Resource(**resource))
-            except ValidationError:
+            except ValidationError as err:
                 print(f"Unable to insert: {resource}")
+                print(err.json())
     except ValidationError as err:
         print(err.json())
 
