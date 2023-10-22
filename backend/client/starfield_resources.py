@@ -4,7 +4,7 @@ from client import models
 
 
 class ApiClient:
-    RESOURCE_ROUTE = "http://localhost:8000/api/resources"
+    RESOURCE_ROUTE = "http://localhost:8000/api/resources/"
 
     def __init__(self, token: models.Token):
         self.headers = {
