@@ -9,18 +9,18 @@ class Resource(models.Model):
         (3, "exotic"),
         (4, "unique"),
     )
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     abbreviation = models.CharField(max_length=255)
     rarity = models.IntegerField(choices=RARITY)
 
 
 class Star(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     level = models.IntegerField()
 
 
 class Planet(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     star = models.ForeignKey(
         Star, on_delete=models.PROTECT, null=False, related_name="planets"
     )
@@ -29,7 +29,7 @@ class Planet(models.Model):
 
 
 class Moon(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     planet = models.ForeignKey(
         Planet, on_delete=models.PROTECT, null=False, related_name="moons"
     )
