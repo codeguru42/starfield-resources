@@ -67,8 +67,7 @@ def _transform_inorganic(resource_data):
 
 
 def _extract_inorganic(filename):
-    resource_data = pd.read_csv(filename)
-    return resource_data
+    return pd.read_csv(filename)
 
 
 if __name__ == "__main__":
