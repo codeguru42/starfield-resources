@@ -41,10 +41,15 @@ def _load_inorganic(resource_data, username, password):
         token = AuthClient().token(username, password)
         client = ApiClient(token)
         for resource in resource_data.to_dict("records")[1:]:
-            # TODO: update existing resource
             try:
                 resource["rarity"] = models.Rarity[resource["rarity"].upper()]
-                client.post_resource(models.Resource(**resource))
+                model = models.Resource(**resource)
+                response = client.post_resource(model)
+                # TODO should post_resource() do this check and throw an
+                #  exception instead?
+                if response.status_code != 201:
+                    print(model)
+                    print(response.json())
             except ValidationError as err:
                 print(f"Unable to insert: {resource}")
                 print(err.json())

@@ -15,4 +15,4 @@ class ApiClient:
     def post_resource(self, resource: models.Resource):
         # TODO: Error handling
         body = resource.model_dump_json()
-        requests.post(ApiClient.RESOURCE_ROUTE, headers=self.headers, data=body)
+        return requests.post(ApiClient.RESOURCE_ROUTE, headers=self.headers, data=body)
