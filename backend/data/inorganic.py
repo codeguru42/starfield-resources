@@ -6,11 +6,11 @@ from client.auth import AuthClient
 from client.starfield_resources import ApiClient
 
 
-def _extract_inorganic(filename):
+def extract(filename):
     return pd.read_csv(filename)
 
 
-def _transform_inorganic(resource_data):
+def transform(resource_data):
     resource_data.columns = map(str.lower, resource_data.columns)
     resource_data = resource_data[["resource", "description", "rarity"]]
     resource_data = resource_data.rename(
@@ -19,7 +19,7 @@ def _transform_inorganic(resource_data):
     return resource_data
 
 
-def _load_inorganic(resource_data, username, password):
+def load(resource_data, username, password):
     try:
         token = AuthClient().token(username, password)
         client = ApiClient(token)

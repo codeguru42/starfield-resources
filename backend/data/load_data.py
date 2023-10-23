@@ -1,12 +1,8 @@
 import numpy as np
 import pandas as pd
 import typer
-from pydantic import ValidationError
 
-from client import models
-from client.auth import AuthClient
-from client.starfield_resources import ApiClient
-from data.inorganic import _extract_inorganic, _transform_inorganic, _load_inorganic
+from data import inorganic
 
 app = typer.Typer()
 
@@ -32,9 +28,9 @@ def parse_resources(filename: str):
 
 @app.command()
 def load_inorganic(filename: str, username: str, password: str):
-    resource_data = _extract_inorganic(filename)
-    resource_data = _transform_inorganic(resource_data)
-    _load_inorganic(resource_data, username, password)
+    resource_data = inorganic.extract(filename)
+    resource_data = inorganic.transform(resource_data)
+    inorganic.load(resource_data, username, password)
 
 
 if __name__ == "__main__":
