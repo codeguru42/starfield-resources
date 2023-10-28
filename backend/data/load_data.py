@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import typer
 
-from data import inorganic
+from data import inorganic, stars
 
 app = typer.Typer()
 
@@ -31,6 +31,13 @@ def load_inorganic(filename: str, username: str, password: str):
     resource_data = inorganic.extract(filename)
     resource_data = inorganic.transform(resource_data)
     inorganic.load(resource_data, username, password)
+
+
+@app.command()
+def load_stars(filename: str, username: str, password: str):
+    data = stars.extract(filename)
+    data = stars.transform(data)
+    stars.load(data, username, password)
 
 
 if __name__ == "__main__":
