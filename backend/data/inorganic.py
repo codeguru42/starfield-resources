@@ -10,13 +10,11 @@ def extract(filename):
     return pd.read_csv(filename)
 
 
-def transform(resource_data):
-    resource_data.columns = resource_data.columns.str.lower()
-    resource_data = resource_data[["resource", "description", "rarity"]]
-    resource_data = resource_data.rename(
-        columns={"description": "name", "resource": "abbreviation"}
-    )
-    return resource_data
+def transform(data):
+    data.columns = data.columns.str.lower()
+    data = data[["resource", "description", "rarity"]]
+    data = data.rename(columns={"description": "name", "resource": "abbreviation"})
+    return data
 
 
 def load(resource_data, username, password):
