@@ -11,7 +11,7 @@ def extract(filename):
 
 
 def transform(resource_data):
-    resource_data.columns = map(str.lower, resource_data.columns)
+    resource_data.columns = resource_data.columns.str.lower()
     resource_data = resource_data[["resource", "description", "rarity"]]
     resource_data = resource_data.rename(
         columns={"description": "name", "resource": "abbreviation"}
